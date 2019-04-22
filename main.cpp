@@ -25,16 +25,14 @@ using namespace std;
     vector<string> InOT = BST->inOrderTraversal();
     vector<string> PreOT = BST->preOrderTraversal();
     vector<string> PostOT = BST->postOrderTraversal();
-    /*
+
     string isInTree1 = "series";
-    string isInTree2 = "the";
-    string isInTree3 = "this";
-    string isNotInTree = "lamp";
     bool test1 = BST->isItemInTree(isInTree1);
-    bool test2 = BST->isItemInTree(isInTree2);
-    bool test3 = BST->isItemInTree(isInTree3);
-    bool test4 = BST->isItemInTree(isNotInTree);
-    */
+    if(test1)
+        cout <<"true"<<endl;
+    else
+        cout<<"false"<<endl;
+
     bool isEmpty = BST->isEmpty();
     bool isFull = BST->isFull();
 

@@ -347,17 +347,22 @@ bool BST_312<ItemType>::isItemInTree(const ItemType& item){
     if(root == NULL)
         return false;
     vector<ItemType> s; //create stack
-    s.push_back(*root); //pushing TreeNodes
+    TreeNode* ptr = root;
+    s.push_back(ptr->data); //push first datapoint
     while(!s.empty()){ //keep searching until nothing is on the stack ie: no more nodes to search
-        TreeNode temp = s.back(); //load node into temp
+        ItemType temp = s.back(); //load node into temp
         s.pop_back();   //free the node from the stack
-        if(temp.data == item)
+        if(temp == item)
             return true;
-        else{           //If not a match, push left and right on to stack
-            if(temp.left != NULL)
-                s.push_back(temp.left);
-            if(temp.right != NULL)
-                s.push_back(temp.right);
+        else{
+            if(temp>item && ptr->left != NULL) {    //if data we're at is greater than the item we're looking for: go right (if its not null)
+                ptr = ptr->left;            //
+                s.push_back(ptr->data);
+            }
+            if(temp<item && ptr->right != NULL) {   //if data of the node we're at is less than what we're looking for, go left (if not null)
+                ptr = ptr->right;
+                s.push_back(ptr->data);
+            }
         }
     }
     return false; //if we get here, it wasn't in the tree
